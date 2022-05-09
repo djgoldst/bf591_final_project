@@ -89,8 +89,8 @@ filt_counts_heatmap <- function(filt_counts){
                                                            just=c("right","top"))))
   pheatmap(log10(filt_counts+1),
           col = brewer.pal(n=9,"Blues"),
-          legend_breaks = c(4,5,6,6.48),
-          legend_labels = c("4","5","6","log10(counts)"),
+          legend_breaks = c(0,1,2,3,4,5,6,6.48),
+          legend_labels = c("0","1","2","3","4","5","6","log10(counts)"),
           drop_levels = TRUE,
           show_rownames = FALSE,
           fontsize = 6,
