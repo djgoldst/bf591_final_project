@@ -121,6 +121,5 @@ pca_biplot <- function(filt_counts, metadata, first_PC = "PC1", second_PC = "PC2
     theme(text = element_text(size = 9)) +
     labs(x = paste0(first_PC," (",round(var_tbl[var_tbl$PC == first_PC, "VE"],4)*100,"% Variance Explained)"),
          y = paste0(second_PC," (",round(var_tbl[var_tbl$PC == second_PC, "VE"],4)*100,"% Variance Explained)"))
-  return(var_tbl)
 }
 
