@@ -6,8 +6,10 @@
 library(shiny)
 library(bslib)
 library(colourpicker)
+# library(BiocManager)
 
 options(shiny.maxRequestSize=30*1024^2)
+# options(repos = BiocManager::repositories())
 
 source("samples.R")
 source("counts.R")
