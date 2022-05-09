@@ -4,28 +4,28 @@
 ## Email: djgoldst@bu.edu
 
 library(tidyverse)
-library(fgsea)
+# library(fgsea)
 
 options(scipen=0)
 
-run_fgsea <- function(de_res, gmt, min_size = 15, max_size = 500) {
-  gene_ids <- de_res %>% 
-    arrange(padj) %>%
-    pull(symbol)
-  
-  genelist <- de_res %>% 
-    drop_na(symbol, log2FoldChange) %>% 
-    distinct(symbol, log2FoldChange, .keep_all=TRUE) %>%
-    arrange(desc(log2FoldChange)) %>% 
-    dplyr::select(symbol, log2FoldChange) %>% 
-    deframe()
-  
-  gmt_path <- gmtPathways(gmt)
-
-  fgsea_res <- fgsea(gmt_path, genelist, minSize=min_size, maxSize=max_size) %>% as_tibble()
-
-  return(fgsea_res)
-}
+# run_fgsea <- function(de_res, gmt, min_size = 15, max_size = 500) {
+#   gene_ids <- de_res %>%
+#     arrange(padj) %>%
+#     pull(symbol)
+# 
+#   genelist <- de_res %>%
+#     drop_na(symbol, log2FoldChange) %>%
+#     distinct(symbol, log2FoldChange, .keep_all=TRUE) %>%
+#     arrange(desc(log2FoldChange)) %>%
+#     dplyr::select(symbol, log2FoldChange) %>%
+#     deframe()
+# 
+#   gmt_path <- gmtPathways(gmt)
+# 
+#   fgsea_res <- fgsea(gmt_path, genelist, minSize=min_size, maxSize=max_size) %>% as_tibble()
+# 
+#   return(fgsea_res)
+# }
 
 fgsea_NES_barplot <- function(fgsea_results, pathway_name, num_paths){
   fgsea_NES <- arrange(fgsea_results, desc(NES))
