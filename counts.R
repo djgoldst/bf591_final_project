@@ -101,7 +101,7 @@ filt_counts_heatmap <- function(filt_counts){
 }
 
 pca_biplot <- function(filt_counts, metadata, first_PC = "PC1", second_PC = "PC2"){
-  pca_res <- prcomp(t(filt_counts), center=FALSE, scale=FALSE)
+  pca_res <- prcomp(scale(t(filt_counts)), center=FALSE, scale=FALSE)
   variance <- pca_res$sdev**2
   var_tbl <- tibble(PC = factor(str_c("PC",1:69),levels = str_c("PC",1:69)),
                     VE = variance/sum(variance))
